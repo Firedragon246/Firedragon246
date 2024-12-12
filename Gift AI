@@ -1,0 +1,135 @@
+ import random
+
+ # Gift categories with prices
+ gift_suggestions = {
+     'tech': [
+         ('Wireless earbuds', 25),
+         ('Smartwatch', 100),
+         ('Portable power bank', 30),
+         ('Bluetooth speaker', 40),
+         ('Wireless Mouse', 15),
+         ('Monitor', 150),
+         ('Headphones', 60),
+         ('LED Lights', 20),
+         ('Smart TV', 500)
+     ],
+     'fashion': [
+         ('Stylish watch', 40),
+         ('Leather wallet', 50),
+         ('Stylish Shoes', 60),
+         ('Personalized jewelry', 70),
+         ('Stylish Jacket', 80),
+         ('Stylish Bag', 45),
+         ('Stylish Necklace', 30),
+         ('Stylish Ring', 25)
+     ],
+     'home': [
+         ('Decorative throw blanket', 30),
+         ('Scented candles', 20),
+         ('Smart home device', 50),
+         ('Coffee maker', 60),
+         ('Smart TV', 500),
+         ('Mini fridge', 100)
+     ],
+     'books': [
+         ('Best-selling novel', 15),
+         ('Self-help book', 25),
+         ('Cookbook', 20),
+         ('Travel journal', 15),
+         ('Science fiction book', 12),
+        ('Fantasy book', 18),
+         ('Mystery book', 20),
+         ('Historical book', 25),
+         ('Romance book', 12)
+     ],
+     'experience': [
+         ('Concert tickets', 100),
+         ('Spa day voucher', 150),
+         ('Weekend getaway', 250),
+         ('Cooking class', 60),
+         ('Road Trip', 200),
+         ('Movie night', 20),
+         ('Vacation', 500)
+     ],
+     'hobbies': [
+         ('Art supplies', 30),
+         ('Fitness tracker', 50),
+         ('Photography camera accessories', 75),
+         ('Gardening kit', 40),
+         ('Cooking recipes', 10),
+         ('Hiking gear', 100)
+     ],
+     'personalized': [
+         ('Customized mug', 15),
+         ('Engraved necklace', 40),
+         ('Personalized photo album', 50),
+         ('Customized T-shirt', 25),
+         ('Customized keychain', 10),
+         ('Customized bracelet', 30),
+         ('Customized Ring', 45),
+         ('Customized Earrings', 35)
+     ],
+     'outdoor': [
+         ('Outdoor chair', 50),
+         ('Shovel', 25),
+         ('Knife', 40),
+         ('Flashlight', 20),
+         ('Hiking boots', 80),
+         ('Hiking poles', 60),
+         ('Rope', 25),
+         ('Backpack', 60),
+         ('Hatchet', 50),
+         ('First-Aid kit', 30)
+     ]
+ }
+
+ # Function to get the user's input
+ def get_user_input():
+ print("Welcome to the Perfect Gift Finder!\n")
+
+     # Collect user data
+     age = int(input("Please enter the recipient's age: "))
+     gender = input("Please enter the recipient's gender (Male/Female/Other): ").lower()
+          relationship = input("Enter your relationship with the recipient (Friend/Family/Partner/Colleague): ").lower()
+     interests = input("Enter the recipient's interests (tech, fashion, home, books, experience, hobbies, personalized, o
+ utdoor):\n: ").lower()
+     budget = float(input("Enter your budget for the gift: $"))
+
+     return age, gender, relationship, interests, budget
+
+ # Function to suggest a gift based on user input
+ def suggest_gift(age, gender, relationship, interests, budget):
+     # Check if the given interest category exists in the gift suggestions
+     if interests not in gift_suggestions:
+         return "Sorry, we don't have suggestions for this category right now."
+
+     # Filter gift suggestions based on budget
+     eligible_gifts = [gift for gift in gift_suggestions[interests] if gift[1] <= budget]
+
+     if not eligible_gifts:
+         return "Sorry, there are no gifts available within your budget for this category."
+
+     # Randomly select a gift suggestion
+     gift = random.choice(eligible_gifts)
+
+     # Customize suggestion based on budget
+     if budget < 20:
+         suggestion = f"How about a thoughtful gift like a {gift[0]}? It’s affordable and meaningful."
+     elif budget >= 20 and budget < 50:
+         suggestion = f"You could consider a gift like a {gift[0]}, a great middle-ground option!"
+suggestion = f"With your budget, you could go for something more premium like a {gift[0]}."
+
+     return suggestion
+
+ # Main function to run the app
+ def main():
+     # Get the user input
+     age, gender, relationship, interests, budget = get_user_input()
+
+     # Get a gift suggestion based on the user's data
+     suggestion = suggest_gift(age, gender, relationship, interests, budget)
+
+     # Display the gift suggestion
+     print(f"\nGift suggestion for a {relationship} ({gender}, {age} years old):\n{suggestion}\n")
+
+ if __name__ == '__main__':
