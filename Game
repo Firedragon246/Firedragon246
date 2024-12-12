@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Game in New Tab</title>
+    <script>
+        function openGame() {
+            // Replace this URL with the game's URL
+            const gameUrl = "https://www.example.com/game"; // URL of the game
+            window.open(gameUrl, "_blank"); // Opens the game in a new tab
+        }
+    </script>
+</head>
+<body>
+    <button onclick="openGame()">Open Game</button>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Game on Page</title>
+    <script>
+        function embedGame() {
+            // URL of the game to embed
+            const gameUrl = "https://www.example.com/embedded-game"; // URL of the game
+            const iframe = document.createElement("iframe");
+            iframe.src = gameUrl;
+            iframe.width = "800";
+            iframe.height = "600";
+            iframe.style.border = "none";
+            document.getElementById("game-container").appendChild(iframe);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="embedGame()">Play Game</button>
+    <div id="game-container"></div>
+</body>
+</html>
+
