@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,10 +91,3 @@ function openPiano() {
 function closePiano() {
     document.getElementById("piano-popup").style.display = "none";
 }
-/your-project-directory
-│
-├── index.html      # Main HTML file
-├── styles.css      # CSS for styling the piano
-├── script.js       # JavaScript to handle key presses
-└── /sounds         # Folder containing the sound files (e.g., C.mp3, D.mp3, etc.)
-
